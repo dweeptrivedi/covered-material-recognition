@@ -39,7 +39,6 @@ You need to install:
 
 
 ## Dataset
-
 1. The authors can provide the dataset when requested. On behalf of the requester, the authors will forward the request to LA City to approve releasing the dataset to the requester.
 
     NOTE: It is expected that the Dataset be structured in PASCAL VOC format (images under JPEGImages, XML files under Annotations directory)
@@ -48,7 +47,6 @@ You need to install:
 
 
 ## Detection
-
 - `test.txt` should contain list of image paths that needs detection.
 
 - run `python3 detector.py` for default network.
@@ -79,8 +77,9 @@ You need to install:
 | --scaled-dataset | boolean | False | True if using scaled dataset |
 | --segment-dataset | boolean | False | True if using segment dataset |
 | --scale-val | float | 0.3 | scale factor when using scale heuristic |
+| --output-file | path to the output file | "output.csv" | output file path to save predictions . |
+
 
 ## Citation
-
 If you used this code for your experiments or found it helpful, consider citing the following paper:
 
