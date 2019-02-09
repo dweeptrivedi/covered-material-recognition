@@ -2,6 +2,10 @@
 
 This repository contains source code and trained models for paper [RECOGNIZING MATERIAL OF A COVERED OBJECT: A CASE STUDY WITH GRAFFITI]()
 
+Sample predictions (ground-truth boxes are blue, predicted boxes are red):
+
+<img src="images/test_0.png" alt="drawing" width="250"/> <img src="images/test_1.png" alt="drawing" width="250"/> <img src="images/test_9.png" alt="drawing" width="250"/>
+
 ## Table of contents
 
 - [Prerequisites](#prerequisites)
@@ -14,6 +18,7 @@ This repository contains source code and trained models for paper [RECOGNIZING M
 
 You need to install:
 - [Python3](https://www.python.org/downloads/)
+- [Caffe](http://caffe.berkeleyvision.org/installation.html) (optional)
 - Use `requirements.txt` to install required python dependencies
 
     ```Shell
