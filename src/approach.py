@@ -9,6 +9,7 @@ class Approach(object):
         self.scaled_dataset = args.scaled_dataset
         self.segment_dataset = args.segment_dataset
         self.scale_val = args.scale_val
+        self.output_file = args.output_file
         
         #class name to int mapping
         self.name_to_id = {}

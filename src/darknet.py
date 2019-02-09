@@ -53,7 +53,7 @@ def init_net(cpu=True):
     if cpu==True:
         lib = CDLL("src/libdarknet_cpu.so", RTLD_GLOBAL)
     else:
-        lib = CDLL("train/darknet/libdarknet.so", RTLD_GLOBAL)
+        lib = CDLL("src/libdarknet_gpu.so", RTLD_GLOBAL)
         set_gpu = lib.cuda_set_device
         set_gpu.argtypes = [c_int]
 

@@ -47,7 +47,7 @@ def deploy_func(input_file, thresh, nms, approach_obj):
 
     imageList = [line.strip() for line in lines]
 
-    csvFile = open("output/sample_submission.csv","w")
+    csvFile = open(approach_obj.output_file,"w")
     if approach_obj.name=="one-phase":
         pred_dict = deploy_func_one_phase(imageList, thresh, nms, approach_obj)
     elif approach_obj.name=="two-phase":
@@ -90,10 +90,11 @@ def main():
     parser.add_argument('--nms', type=float, help='nms threshold value', default=0.45)
     parser.add_argument('--thresh', type=float, help='threshold value for detector', default=0.5)
     parser.add_argument('--gpu', type=bool, help='want to run on GPU?', default=True)
-    parser.add_argument('--input-file', type=str, help='location to the input list of test images',default='test_25c.txt')
     parser.add_argument('--scaled-dataset', help='using scaled dataset', action="store_true", default=False)
     parser.add_argument('--segment-dataset', help='using segment dataset', action="store_true", default=False)
     parser.add_argument('--scale-val', type=float, help='scale value',default=0.3)
+    parser.add_argument('--input-file', type=str, help='location to the input list of test images',default='test.txt')
+    parser.add_argument('--output-file', type=str, help='output file path to save predictions',default='output.csv')
     args = parser.parse_args()
     
     app = args.approach
