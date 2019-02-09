@@ -16,11 +16,11 @@ def deploy_func_one_phase(imageList, thresh, nms, approach_obj):
         dict: dict of predicted bounding boxes
     """
 
-	if (approach_obj.heuristic=="scale" or approach_obj.scaled_dataset):
+    if (approach_obj.heuristic=="scale" or approach_obj.scaled_dataset):
 	    scale = "_scale"
-	elif approach_obj.segment_dataset:
+    elif approach_obj.segment_dataset:
 	    scale = "_segment" 
-	else:
+    else:
 	    scale = ""
     scale_val = approach_obj.scale_val if approach_obj.scaled_dataset else ""
     yolo_model = (approach_obj.name+"/darknet/yolov3_"+str(approach_obj.num_classes)+"c.cfg.test").encode()
