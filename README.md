@@ -39,9 +39,9 @@ You need to install:
 
 
 ## Dataset
-1. The authors can provide the dataset when requested. On behalf of the requester, the authors will forward the request to LA City to approve releasing the dataset to the requester.
+1. The authors can provide the dataset when requested. On behalf of the requester, the authors will forward the request to LA City for approval.
 
-    NOTE: It is expected that the Dataset be structured in PASCAL VOC format (images under JPEGImages, XML files under Annotations directory)
+    NOTE: The dataset will be structured in PASCAL VOC format (images under JPEGImages, XML files under Annotations directory)
 
 2. To download trained models, execute `./download.sh`
 
