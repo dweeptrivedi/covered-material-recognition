@@ -15,8 +15,13 @@ def deploy_func_one_phase(imageList, thresh, nms, approach_obj):
     Returns:
         dict: dict of predicted bounding boxes
     """
-    scale = "_scale" if (approach_obj.heuristic=="scale" or approach_obj.scaled_dataset) else ""
-    scale = "_segment" if approach_obj.segment_dataset else scale
+
+	if (approach_obj.heuristic=="scale" or approach_obj.scaled_dataset):
+	    scale = "_scale"
+	elif approach_obj.segment_dataset:
+	    scale = "_segment" 
+	else:
+	    scale = ""
     scale_val = approach_obj.scale_val if approach_obj.scaled_dataset else ""
     yolo_model = (approach_obj.name+"/darknet/yolov3_"+str(approach_obj.num_classes)+"c.cfg.test").encode()
     yolo_weights = (approach_obj.name+"/weights/"
@@ -30,8 +35,7 @@ def deploy_func_one_phase(imageList, thresh, nms, approach_obj):
         dn.set_gpu(0)
     net = dn.load_net(yolo_model, yolo_weights, 0)
     meta = dn.load_meta(yolo_data)
-    
-    # pipeline: object detection
+
     box_id = 0
     pred_dict = defaultdict(dict)
     for idx, img_file in enumerate(imageList):
@@ -42,22 +46,16 @@ def deploy_func_one_phase(imageList, thresh, nms, approach_obj):
             #https://github.com/pjreddie/darknet/issues/243
             y = y-(h/2)
             x = x-(w/2)
-
             img = cv2.imread(img_file)
-
             y1_unscaled = int(max(0,y))
             y2_unscaled = int(min((y+h),img.shape[0]))
             x1_unscaled = int(max(0,x))
             x2_unscaled = int(min((x+w),img.shape[1]))
-
             crop_img = img[y1_unscaled:y2_unscaled,x1_unscaled:x2_unscaled]
-
             if crop_img.size > 0:
                 pred_box_list.append(np.array([box_id, approach_obj.name_to_id[bbox[0].decode("utf-8")], bbox[1],x1_unscaled,y1_unscaled,x2_unscaled,y2_unscaled]))
                 box_id += 1
-        
         pred_dict[img_file] = np.array(pred_box_list)
-
     print("total images predicted:", len(pred_dict))
     print("total bbox predicted:", box_id)
     return pred_dict

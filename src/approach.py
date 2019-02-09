@@ -24,7 +24,6 @@ class Approach(object):
                 
         model_dir = "segment_dataset" if self.segment_dataset else self.heuristic
         self.level1_classes = self.class_list
-        self.level2_clf = None            
             
         if self.name == "two-phase":
             self.level1_model = os.path.join(
