@@ -86,5 +86,16 @@ You need to install:
 
 
 ## Citation
+
 If you used this code for your experiments or found it helpful, consider citing the following paper:
 
+<pre>
+@inproceedings{alfarrarjeh2019recognizing,
+  title={Recognizing material of a covered object: A case study with graffiti},
+  author={Alfarrarjeh, Abdullah and Trivedi, Dweep and Kim, Seon Ho and Park, Hyunjun and Huang, Chao and Shahabi, Cyrus},
+  booktitle={Proceedings of the 2019 IEEE International Conference on Image Processing (ICIP)},
+  pages={2491--2495},
+  year={2019},
+  organization={IEEE}
+}
+</pre>
